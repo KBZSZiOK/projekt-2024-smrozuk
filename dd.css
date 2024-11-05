@@ -1,0 +1,68 @@
+body{
+    display: flex;
+    flex-direction: column;
+    background-color: antiquewhite;
+}
+
+#baner{
+    display: flex;
+    font-size: 200%;
+    justify-content: center;
+    flex-direction: row;
+    border: 1px solid red;
+    height: 10vw;
+}
+#srodek{
+    display: flex;
+    border: 1px solid blue;
+    height: 35vw;
+    width: 100%;
+
+}
+#stopka{
+    border: 1px solid green;
+    height: 10vw;
+}
+@media only screen and (max-width: 600px) {
+    #baner {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      height: 100%;
+    }
+    #srodek {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        height: 100%;
+      }
+    #stopka {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        height: 100%;
+      }
+      
+  }
+
+  #lewo,#prawo{
+    flex: 1;
+  }
+
+th,td{
+    border: 1px black solid;
+    border-collapse: collapse;
+  }
+
+table{
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.DODAJ{
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
