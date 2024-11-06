@@ -63,8 +63,37 @@
                 </tr>";
             }
             echo "</table><br>";
-            echo '<input class="DODAJ" type="text" name="dane"></input><input class="DODAJ" type="submit" value="DODAJ" name="dodaj"></input>';
+            echo '
+                <form method="POST">
+                    <div id="dif">
+                    Dodaj tytuł<input type="text" class="DODAJ" name="tytul">
+                    Dodaj reżysera<input type="text" class="DODAJ" name="rezyser">
+                    Czas trwania<input type="text" class="DODAJ" name="czas">
+                    </div><br>
+                    <input type="hidden" name="przeslij" value="przes"></input>
+                    <input type="submit" value="przeslij"  id="przeslij"></input>
+                </form>
+            ';
       }
+      if(isset($_POST["przeslij"])){
+            if(empty($_POST["tytul"]) || empty($_POST["rezyser"]) || empty($_POST["czas"])){
+                echo "Wprowadź dane!";
+            }
+            else{
+                $tytul = $_POST["tytul"];
+                $rezyser = $_POST["rezyser"];
+                $czas = $_POST["czas"];
+
+                $wprowadz = "insert into filmy(Tytul,Rezyser,Czas_trwania) values('$tytul','$rezyser','$czas')";
+                $run = mysqli_query($conn,$wprowadz);
+                if($run){
+                    echo "Wprowadzono dane!";
+                }
+                else{
+                    echo "Nie wprowadzono danych";
+                }
+            }
+        }   
 
       
         if(isset($_POST["filmy_rodzaj"])){
@@ -83,7 +112,35 @@
                 </tr>";
             }
             echo "</table>";
+            echo '
+            <form method="POST">
+                <div id="dif">
+                Podaj ID filmu<input type="text" class="DODAJ" name="film">
+                Podaj ID rodzaju<input type="text" class="DODAJ" name="rodzaj">
+                </div><br>
+                <input type="hidden" name="przeslij2" value="przes"></input>
+                <input type="submit" value="przeslij"  id="przeslij"></input>
+            </form>
+        ';
     }
+    if(isset($_POST["przeslij2"])){
+        if(empty($_POST["film"]) || empty($_POST["rodzaj"])){
+            echo "Wprowadź dane!";
+        }
+        else{
+            $Film_ID = $_POST["film"];
+            $Rodzaj_ID = $_POST["rodzaj"];
+
+            $wprowadz = "insert into filmy_rodzaj(Filmy_ID,Rodzaj_ID) values('$Film_ID','$Rodzaj_ID')";
+            $run = mysqli_query($conn,$wprowadz);
+            if($run){
+                echo "Wprowadzono dane!";
+            }
+            else{
+                echo "Nie wprowadzono danych";
+            }
+        }
+    }   
 
 
         if(isset($_POST["bilety"])){
@@ -106,7 +163,39 @@
                 </tr>";
             }
             echo "</table>";
+            echo '
+            <form method="POST">
+                <div id="dif">
+                Podaj ID seansu<input type="text" class="DODAJ" name="Seans_ID">
+                Podaj ID sprzedawcy<input type="text" class="DODAJ" name="Sprzedawca_ID">
+                Podaj ID klienta<input type="text" class="DODAJ" name="Klient_ID">
+                Podaj cenę<input type="text" class="DODAJ" name="Cena">
+                </div><br>
+                <input type="hidden" name="przeslij3" value="przes"></input>
+                <input type="submit" value="przeslij"  id="przeslij"></input>
+            </form>
+        ';
     }
+    if(isset($_POST["przeslij3"])){
+        if(empty($_POST["Seans_ID"]) || empty($_POST["Sprzedawca_ID"]) || empty($_POST["Klient_ID"]) || empty($_POST["Cena"])){
+            echo "Wprowadź dane!";
+        }
+        else{
+            $Seans_ID = $_POST["Seans_ID"];
+            $Sprzedawca_ID = $_POST["Sprzedawca_ID"];
+            $Klient_ID = $_POST["Klient_ID"];
+            $Cena = $_POST["Cena"];
+
+            $wprowadz = "insert into bilety(Seans_ID,Sprzedawca_ID,Klient_ID,Cena) values('$Seans_ID','$Sprzedawca_ID','$Klient_ID','$Cena')";
+            $run = mysqli_query($conn,$wprowadz);
+            if($run){
+                echo "Wprowadzono dane!";
+            }
+            else{
+                echo "Nie wprowadzono danych";
+            }
+        }
+    }  
 
 
         if(isset($_POST["rodzaj_filmu"])){
@@ -123,7 +212,33 @@
                 </tr>";
             }
             echo "</table>";
-}
+            echo '
+            <form method="POST">
+                <div id="dif">
+                Podaj nazwę rodzaju<input type="text" class="DODAJ" name="Nazwa">
+                </div><br>
+                <input type="hidden" name="przeslij8" value="przes"></input>
+                <input type="submit" value="przeslij"  id="przeslij"></input>
+            </form>
+        ';
+        }
+        if(isset($_POST["przeslij8"])){
+            if(empty($_POST["Nazwa"])){
+                echo "Wprowadź dane!";
+            }
+            else{
+                $Nazwa = $_POST["Nazwa"];
+
+                $wprowadz = "insert into rodzaj_filmu(Nazwa) values('$Nazwa')";
+                $run = mysqli_query($conn,$wprowadz);
+                if($run){
+                    echo "Wprowadzono dane!";
+                }
+                else{
+                    echo "Nie wprowadzono danych";
+                }
+            }
+        }  
 
 
         if(isset($_POST["seanse"])){
@@ -146,7 +261,40 @@
                 </tr>";
             }
             echo "</table>";
+            echo '
+            <form method="POST">
+                <div id="dif">
+                Podaj termin<input type="text" class="DODAJ" name="Termin">
+                Podaj ID sali<input type="text" class="DODAJ" name="Sala_ID">
+                Podaj ID filmu<input type="text" class="DODAJ" name="Film_ID">
+                Podaj liczbe wolnych miejsc<input type="text" class="DODAJ" name="Liczba_wolnych_miejsc">
+                </div><br>
+                <input type="hidden" name="przeslij4" value="przes"></input>
+                <input type="submit" value="przeslij"  id="przeslij"></input>
+            </form>
+        ';
         }
+        if(isset($_POST["przeslij4"])){
+            if(empty($_POST["Termin"]) || empty($_POST["Sala_ID"]) || empty($_POST["Film_ID"]) || empty($_POST["Liczba_wolnych_miejsc"])){
+                echo "Wprowadź dane!";
+            }
+            else{
+                $Termin = $_POST["Termin"];
+                $Sala_ID = $_POST["Sala_ID"];
+                $Film_ID = $_POST["Film_ID"];
+                $Liczba_wolnych_miejsc = $_POST["Liczba_wolnych_miejsc"];
+    
+                $wprowadz = "insert into seanse(Termin,Sala_ID,Film_ID,Liczba_wolnych_miejsc) values('$Termin','$Sala_ID','$Film_ID','$Liczba_wolnych_miejsc')";
+                $run = mysqli_query($conn,$wprowadz);
+                if($run){
+                    echo "Wprowadzono dane!";
+                }
+                else{
+                    echo "Nie wprowadzono danych";
+                }
+            }
+        }  
+        
 
 
         if(isset($_POST["klienci"])){
@@ -167,7 +315,37 @@
                 </tr>";
             }
             echo "</table>";
+            echo '
+            <form method="POST">
+                <div id="dif">
+                Podaj imię<input type="text" class="DODAJ" name="Imie">
+                Podaj nazwisko<input type="text" class="DODAJ" name="Nazwisko">
+                Podaj mail<input type="text" class="DODAJ" name="Mail">
+                </div><br>
+                <input type="hidden" name="przeslij5" value="przes"></input>
+                <input type="submit" value="przeslij"  id="przeslij"></input>
+            </form>
+        ';
         }
+        if(isset($_POST["przeslij5"])){
+            if(empty($_POST["Imie"]) || empty($_POST["Nazwisko"]) || empty($_POST["Mail"])){
+                echo "Wprowadź dane!";
+            }
+            else{
+                $Imie = $_POST["Imie"];
+                $Nazwisko = $_POST["Nazwisko"];
+                $Mail = $_POST["Mail"];
+    
+                $wprowadz = "insert into klienci(Imie,Nazwisko,Mail) values('$Imie','$Nazwisko','$Mail')";
+                $run = mysqli_query($conn,$wprowadz);
+                if($run){
+                    echo "Wprowadzono dane!";
+                }
+                else{
+                    echo "Nie wprowadzono danych";
+                }
+            }
+        }  
 
 
         if(isset($_POST["sale"])){
@@ -184,7 +362,33 @@
                 </tr>";
             }
             echo "</table>";
+            echo '
+            <form method="POST">
+                <div id="dif">
+                Podaj ilosc miejsc<input type="text" class="DODAJ" name="iloscmiejsc">
+                </div><br>
+                <input type="hidden" name="przeslij6" value="przes"></input>
+                <input type="submit" value="przeslij"  id="przeslij"></input>
+            </form>
+        ';
         }
+        if(isset($_POST["przeslij6"])){
+            if(empty($_POST["iloscmiejsc"])){
+                echo "Wprowadź dane!";
+            }
+            else{
+                $iloscmiejsc = $_POST["iloscmiejsc"];
+    
+                $wprowadz = "insert into sale(Ilosc_miejsc) values('$iloscmiejsc')";
+                $run = mysqli_query($conn,$wprowadz);
+                if($run){
+                    echo "Wprowadzono dane!";
+                }
+                else{
+                    echo "Nie wprowadzono danych";
+                }
+            }
+        } 
 
 
         if(isset($_POST["sprzedawcy"])){
@@ -203,7 +407,35 @@
                 </tr>";
             }
             echo "</table>";
+            echo '
+            <form method="POST">
+                <div id="dif">
+                Podaj imię<input type="text" class="DODAJ" name="Imie">
+                Podaj nazwisko<input type="text" class="DODAJ" name="Nazwisko">
+                </div><br>
+                <input type="hidden" name="przeslij7" value="przes"></input>
+                <input type="submit" value="przeslij"  id="przeslij"></input>
+            </form>
+        ';     
         }
+        if(isset($_POST["przeslij7"])){
+            if(empty($_POST["Imie"]) || empty($_POST["Nazwisko"])){
+                echo "Wprowadź dane!";
+            }
+            else{
+                $Imie = $_POST["Imie"];
+                $Nazwisko = $_POST["Nazwisko"];
+    
+                $wprowadz = "insert into sprzedawcy(Imie,Nazwisko) values('$Imie','$Nazwisko')";
+                $run = mysqli_query($conn,$wprowadz);
+                if($run){
+                    echo "Wprowadzono dane!";
+                }
+                else{
+                    echo "Nie wprowadzono danych";
+                }
+            }
+        }  
 
     
           ?>
