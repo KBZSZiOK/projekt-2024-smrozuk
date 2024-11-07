@@ -8,33 +8,35 @@
 </head>
 <body>
     <div id="baner">
-        <h1>Wyszukaj dane</h1>
+    <img src="kino.webp" id="zdj">
+        <h1>KINO</h1>
+
     </div>
     <div id="srodek">
     <form method="post">
         <div id="lewo">
-        <input type="submit" value= "filmy" name="filmy"></input><br><br>
-        <input type="submit" value= "filmy_rodzaj" name="filmy_rodzaj"></input><br><br>
-        <input type="submit" value= "rodzaj_filmu" name="rodzaj_filmu"></input><br><br>
-        <input type="submit" value= "seanse" name="seanse"></input><br><br>
-        <input type="submit" value= "klienci" name="klienci"></input><br><br>
-        <input type="submit" value= "bilety" name="bilety"></input><br><br>
-        <input type="submit" value= "sale" name="sale"></input><br><br>
-        <input type="submit" value= "sprzedawcy" name="sprzedawcy"></input><br><br>
+        <input type="submit" value= "filmy" name="filmy" class="submity"></input><br><br>
+        <input type="submit" value= "filmy_rodzaj" name="filmy_rodzaj" class="submity"></input><br><br>
+        <input type="submit" value= "rodzaj_filmu" name="rodzaj_filmu" class="submity"></input><br><br>
+        <input type="submit" value= "seanse" name="seanse" class="submity"></input><br><br>
+        <input type="submit" value= "klienci" name="klienci" class="submity"></input><br><br>
+        <input type="submit" value= "bilety" name="bilety" class="submity"></input><br><br>
+        <input type="submit" value= "sale" name="sale" class="submity"></input><br><br>
+        <input type="submit" value= "sprzedawcy" name="sprzedawcy" class="submity"></input><br><br>
         </form>
         </div>
 
         <div id="prawo">
         <?php
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $database = "kino"; 
-        $conn = new mysqli($servername, $username, $password, $database);
-    
-        if ($conn->connect_error) {
-            die("Błąd połączenia: " . $conn->connect_error);
-        }
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
+            $database = "kino"; 
+            $conn = new mysqli($servername, $username, $password, $database);
+        
+            if ($conn->connect_error) {
+                die("Błąd połączenia: " . $conn->connect_error);
+            }
     
         $filmy = mysqli_query($conn, "select * from filmy");
         $filmy_rodzaj = mysqli_query($conn, "select * from filmy_rodzaj");
@@ -60,7 +62,7 @@
                 <td>".$row['Tytul']. "</td>
                 <td>".$row['Rezyser']. "</td>
                 <td>".$row['Czas_trwania']. "</td>
-                </tr>";
+            </tr>";
             }
             echo "</table><br>";
             echo '
@@ -441,6 +443,6 @@
           ?>
           </div>
     </div>
-    <div id="stopka"></div>
+    <div id="stopka">Stronę wykonał Szymon Mrozewski</div>
 </body>
 </html>

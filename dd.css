@@ -1,27 +1,43 @@
 body{
     display: flex;
     flex-direction: column;
-    background-color: antiquewhite;
+    background-color: rgb(130, 153, 131);
+}
+.submity{
+  width: 125px;
+  height: 41px;
+  background-color:rgb(202, 219, 255);
 }
 
+h1{
+  position: relative;
+  left: 15px;
+}
 #baner{
     display: flex;
     font-size: 200%;
-    justify-content: center;
     flex-direction: row;
-    border: 1px solid red;
+    padding-left: 2%;
+    border: 3px solid black;
     height: 10vw;
+}
+#zdj{
+  position: relative;
+  justify-content: end;
 }
 #srodek{
     display: flex;
-    border: 1px solid blue;
+    border: 3px solid black;
+    border-bottom: 0;
+    border-top: 0;
     height: 35vw;
-    width: 100%;
-
 }
 #stopka{
-    border: 1px solid green;
+    display: flex;
+    border: 3px solid black;
     height: 10vw;
+    align-items: center;
+  justify-content: center;
 }
 @media only screen and (max-width: 600px) {
     #baner {
@@ -47,11 +63,13 @@ body{
 
   #lewo,#prawo{
     flex: 1;
+    border: 1px solid black;
   }
 
 th,td{
     border: 1px black solid;
     border-collapse: collapse;
+    background-color: rgb(108, 124, 109);
   }
 
 table{
@@ -59,13 +77,15 @@ table{
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
-.DODAJ,#dif{
-    display: flex;
-    margin: auto;
-    flex-wrap: wrap;
+.DODAJ{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
+
 
 #przeslij{
   height: 30px;
